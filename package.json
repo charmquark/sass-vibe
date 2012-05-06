@@ -1,0 +1,14 @@
+{
+	"name": "sass-vibe",
+	"description": "Support for Sass, an extension to CSS.  Before using sass-vibe, make sure you have Sass itself installed (gem install sass).",
+	"homepage": "https://github.com/csauls/sass-vibe",
+	
+	"authors": [
+		"Christopher Nicholson-Sauls"
+	],
+	
+	"version": "0.1.0",
+	
+	"dependencies": {
+	}
+}
