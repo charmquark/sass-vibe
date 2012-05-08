@@ -28,7 +28,7 @@ module sass;
 
 import std.process;
 
-import vibe.log;
+import vibe.core.log;
 
 
 /**
@@ -36,16 +36,13 @@ import vibe.log;
  */
 struct Sass { static:
 
-	string directory = "./assets/styles/";
-	string target    = "application";
-	
-	bool compile () {
-		auto dir = directory;
+	bool compile ( string dir, string target ) {
 		auto css = dir ~ target ~ ".css";
 		auto src = dir ~ target ~ ".scss";
 		
-		logInfo( "Sass: compiling %s", target );
-		auto status = system( "sass --scss --update --stop-on-error --force " ~ src ~ " " ~ css );
+		logInfo( "Sass: compiling %s -> %s", src, css );
+		auto cmd = "sass --force " ~ src ~ " " ~ css;
+		auto status = system( cmd );
 		if ( status == -1 ) {
 			logError( "Sass: failed to compile!" );
 			return false;
