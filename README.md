@@ -14,7 +14,7 @@ Usage
 -----
 
 First you will need to add a call to compile your stylesheets using SASS. Import the 'sass' module,
-then simply invoke Sass.compile() with two arguments. The first is the directory where '.scss' files
+then simply invoke compileSASS() with two arguments. The first is the directory where '.scss' files
 will be found, and the second is the name of the file you want to compile into CSS. Finally, make
 sure you are serving the files. For example, if you have a file "assets/styles/site.scss" you might
 do this:
@@ -24,7 +24,7 @@ do this:
 	import sass;
 	static this () {
 		// ...
-		Sass.compile( "./assets/styles/", "site" );
+		compileSASS( "./assets/styles/", "site" );
 		// ...
 		router.get( "*", serveStaticFiles( "./assets/" ) );
 		// ...
