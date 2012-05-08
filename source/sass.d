@@ -26,16 +26,31 @@
  */
 module sass;
 
+import std.process;
+
+import vibe.log;
+
+
 /**
  *
  */
 struct Sass { static:
 
-	string directory = "./assets/styles";
+	string directory = "./assets/styles/";
 	string target    = "application";
 	
-	void compile () {
+	bool compile () {
+		auto dir = directory;
+		auto css = dir ~ target ~ ".css";
+		auto src = dir ~ target ~ ".scss";
 		
+		logInfo( "Sass: compiling %s", target );
+		auto status = system( "sass --scss --update --stop-on-error --force " ~ src ~ " " ~ css );
+		if ( status == -1 ) {
+			logError( "Sass: failed to compile!" );
+			return false;
+		}
+		return true;
 	}
 
 }
