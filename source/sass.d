@@ -49,7 +49,7 @@ class SassException : Exception {
 /**
  *
  */
-void compileSASS ( string dir, string target ) {
+void compileSass ( string dir, string target ) {
 	auto css = dir ~ target ~ ".css";
 	auto src = dir ~ target ~ ".scss";
 	
