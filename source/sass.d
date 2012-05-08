@@ -34,20 +34,34 @@ import vibe.core.log;
 /**
  *
  */
+class SassException : Exception {
+
+	/**
+	 *
+	 */
+	this ( string src ) {
+		super( "Sass: failed to compile " ~ src );
+	}
+
+}
+
+
+/**
+ *
+ */
 struct Sass { static:
 
-	bool compile ( string dir, string target ) {
+	void compile ( string dir, string target ) {
 		auto css = dir ~ target ~ ".css";
 		auto src = dir ~ target ~ ".scss";
 		
 		logInfo( "Sass: compiling %s -> %s", src, css );
 		auto cmd = "sass --force " ~ src ~ " " ~ css;
 		auto status = system( cmd );
-		if ( status == -1 ) {
-			logError( "Sass: failed to compile!" );
+		if ( status != 0 ) {
+			throw new SassException( src );
 			return false;
 		}
-		return true;
 	}
 
 }
