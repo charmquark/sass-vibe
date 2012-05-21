@@ -10,5 +10,11 @@
 	"version": "0.2.0",
 	
 	"dependencies": {
+	},
+	
+	"repository": {
+		"kind": "github",
+		"owner": "csauls",
+		"project": "sass-vibe"
 	}
 }

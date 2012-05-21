@@ -8,7 +8,7 @@ Installation
 ------------
 
  - Install SASS itself, either through RubyGems or your operating system's software management system.
- - Add "sass-vibe":">=0.2.0" to your applications dependencies.
+ - Add "sass-vibe":">=0.2.0" to your application's dependencies.
 
 Usage
 -----
