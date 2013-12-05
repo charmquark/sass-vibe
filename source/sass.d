@@ -28,6 +28,8 @@ module sass;
 
 import std.process;
 
+import std.file : exists;
+
 import vibe.core.log;
 
 
@@ -51,7 +53,12 @@ class SassException : Exception {
  */
 void compileSass ( string dir, string target ) {
 	auto css = dir ~ target ~ ".css";
-	auto src = dir ~ target ~ ".scss";
+	auto src = dir ~ target;
+
+  if( exists( src ~ ".sass" ) )
+    src ~= ".sass";
+  else
+    src ~= ".scss";
 	
 	logInfo( "Sass: compiling %s -> %s", src, css );
 	auto cmd = "sass --force " ~ src ~ " " ~ css;
